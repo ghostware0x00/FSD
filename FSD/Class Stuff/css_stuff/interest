@@ -1,0 +1,463 @@
+Sure. I'll give you the **exact ERDPlus workflow**, including **every entity, attribute, relationship, cardinality, and participation constraint** so you can build it without missing anything.
+
+---
+
+# STEP 1: Create HOTEL Entity
+
+### Entity
+
+```text
+HOTEL
+```
+
+### Attributes
+
+* Hotel_ID (PK)
+* Hotel_Name
+* Address
+* Phone
+* Email
+
+### In ERDPlus
+
+1. Click **Entity** → place rectangle → rename to HOTEL.
+2. Click **Attribute** 5 times and connect to HOTEL.
+3. Right-click Hotel_ID → check **Key Attribute**.
+
+---
+
+# STEP 2: Create ROOM Entity
+
+### Entity
+
+```text
+ROOM
+```
+
+### Attributes
+
+* Room_ID (PK)
+* Room_Number
+* Room_Type
+* Price_Per_Night
+* Status
+
+### In ERDPlus
+
+Create ROOM and connect its 5 attributes.
+
+---
+
+# STEP 3: Create Relationship Between HOTEL and ROOM
+
+### Relationship
+
+```text
+CONTAINS
+```
+
+### Meaning
+
+One hotel contains many rooms.
+
+### Cardinality
+
+```text
+HOTEL (1) -------- (N) ROOM
+```
+
+### Participation
+
+```text
+ROOM = Total Participation
+HOTEL = Partial Participation
+```
+
+### In ERDPlus
+
+1. Create Relationship → name it CONTAINS.
+2. Connect HOTEL → CONTAINS.
+3. Connect ROOM → CONTAINS.
+4. Set:
+
+   * HOTEL = 1
+   * ROOM = N
+
+---
+
+# STEP 4: Create EMPLOYEE Entity
+
+### Entity
+
+```text
+EMPLOYEE
+```
+
+### Attributes
+
+* Employee_ID (PK)
+* Name
+* Position
+* Salary
+* Phone
+
+---
+
+# STEP 5: Create Relationship Between HOTEL and EMPLOYEE
+
+### Relationship
+
+```text
+EMPLOYS
+```
+
+### Meaning
+
+One hotel employs many employees.
+
+### Cardinality
+
+```text
+HOTEL (1) -------- (N) EMPLOYEE
+```
+
+### Participation
+
+```text
+EMPLOYEE = Total
+HOTEL = Partial
+```
+
+### In ERDPlus
+
+Connect:
+
+```text
+HOTEL ---- EMPLOYS ---- EMPLOYEE
+```
+
+---
+
+# STEP 6: Create CUSTOMER Entity
+
+### Entity
+
+```text
+CUSTOMER
+```
+
+### Attributes
+
+* Customer_ID (PK)
+* Name
+* Phone
+* Email
+* Address
+
+---
+
+# STEP 7: Create BOOKING Entity
+
+### Entity
+
+```text
+BOOKING
+```
+
+### Attributes
+
+* Booking_ID (PK)
+* Booking_Date
+* Check_In_Date
+* Check_Out_Date
+
+---
+
+# STEP 8: Create Relationship Between CUSTOMER and BOOKING
+
+### Relationship
+
+```text
+MAKES
+```
+
+### Meaning
+
+A customer can make multiple bookings.
+
+### Cardinality
+
+```text
+CUSTOMER (1) -------- (N) BOOKING
+```
+
+### Participation
+
+```text
+BOOKING = Total
+CUSTOMER = Partial
+```
+
+### In ERDPlus
+
+Connect:
+
+```text
+CUSTOMER ---- MAKES ---- BOOKING
+```
+
+---
+
+# STEP 9: Create Relationship Between ROOM and BOOKING
+
+### Relationship
+
+```text
+RESERVES
+```
+
+### Meaning
+
+A room can be booked many times over different dates.
+
+### Cardinality
+
+```text
+ROOM (1) -------- (N) BOOKING
+```
+
+### Participation
+
+```text
+BOOKING = Total
+ROOM = Partial
+```
+
+### In ERDPlus
+
+Connect:
+
+```text
+ROOM ---- RESERVES ---- BOOKING
+```
+
+---
+
+# STEP 10: Create PAYMENT Entity
+
+### Entity
+
+```text
+PAYMENT
+```
+
+### Attributes
+
+* Payment_ID (PK)
+* Amount
+* Payment_Date
+* Payment_Method
+
+---
+
+# STEP 11: Create Relationship Between BOOKING and PAYMENT
+
+### Relationship
+
+```text
+PAID_BY
+```
+
+### Meaning
+
+Every booking generates one payment.
+
+### Cardinality
+
+```text
+BOOKING (1) -------- (1) PAYMENT
+```
+
+### Participation
+
+```text
+BOOKING = Total
+PAYMENT = Total
+```
+
+### In ERDPlus
+
+Connect:
+
+```text
+BOOKING ---- PAID_BY ---- PAYMENT
+```
+
+---
+
+# STEP 12: Create SERVICE Entity
+
+### Entity
+
+```text
+SERVICE
+```
+
+### Attributes
+
+* Service_ID (PK)
+* Service_Name
+* Service_Cost
+
+---
+
+# STEP 13: Create SERVICE_USAGE Entity
+
+This is the associative entity.
+
+### Entity
+
+```text
+SERVICE_USAGE
+```
+
+### Attributes
+
+* Usage_ID (PK)
+* Usage_Date
+
+---
+
+# STEP 14: Create Relationship Between CUSTOMER and SERVICE_USAGE
+
+### Relationship
+
+```text
+USES
+```
+
+### Meaning
+
+Customers can use many services.
+
+### Cardinality
+
+```text
+CUSTOMER (1) -------- (N) SERVICE_USAGE
+```
+
+### Participation
+
+```text
+SERVICE_USAGE = Total
+CUSTOMER = Partial
+```
+
+### In ERDPlus
+
+Connect:
+
+```text
+CUSTOMER ---- USES ---- SERVICE_USAGE
+```
+
+---
+
+# STEP 15: Create Relationship Between SERVICE and SERVICE_USAGE
+
+### Relationship
+
+```text
+AVAILS
+```
+
+### Meaning
+
+A service can be used by many customers.
+
+### Cardinality
+
+```text
+SERVICE (1) -------- (N) SERVICE_USAGE
+```
+
+### Participation
+
+```text
+SERVICE_USAGE = Total
+SERVICE = Partial
+```
+
+### In ERDPlus
+
+Connect:
+
+```text
+SERVICE ---- AVAILS ---- SERVICE_USAGE
+```
+
+---
+
+# FINAL ENTITY LIST
+
+```text
+HOTEL
+ROOM
+EMPLOYEE
+CUSTOMER
+BOOKING
+PAYMENT
+SERVICE
+SERVICE_USAGE
+```
+
+---
+
+# FINAL RELATIONSHIP LIST
+
+```text
+CONTAINS
+EMPLOYS
+MAKES
+RESERVES
+PAID_BY
+USES
+AVAILS
+```
+
+---
+
+# FINAL CARDINALITY TABLE
+
+| Relationship           | Cardinality |
+| ---------------------- | ----------- |
+| HOTEL–ROOM             | 1 : N       |
+| HOTEL–EMPLOYEE         | 1 : N       |
+| CUSTOMER–BOOKING       | 1 : N       |
+| ROOM–BOOKING           | 1 : N       |
+| BOOKING–PAYMENT        | 1 : 1       |
+| CUSTOMER–SERVICE_USAGE | 1 : N       |
+| SERVICE–SERVICE_USAGE  | 1 : N       |
+
+---
+
+# FINAL LAYOUT ON CANVAS
+
+Draw entities approximately like this:
+
+```text
+                     HOTEL
+                   /       \
+                  /         \
+              ROOM       EMPLOYEE
+                |
+             BOOKING ----- PAYMENT
+                |
+             CUSTOMER
+                |
+          SERVICE_USAGE
+                |
+             SERVICE
+```
+
+This layout is clean, includes all required components from your assignment (entities, attributes, key attributes, relationships, cardinality constraints, and participation constraints), and is suitable for submission in ERDPlus.

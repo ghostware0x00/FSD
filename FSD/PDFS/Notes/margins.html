@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Margins></title>
+    <style>
+        body{
+            margin-top: 0; /* for consistency we often turn off the margin-top on typography related elements*/
+        }
+        h1{
+            margin-bottom: 50px;
+        }
+        h2{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- the space created around elements is called margin
+                        (margin top)
+                    -------------------------
+    (magin left)            element            (margin right)
+                    -------------------------
+                        (margin bottom)
+
+    -->
+    <h1>hello world</h1>
+    <h2>hello bye bye world</h2>
+    <!-- margin collasping happens with top and bottom margins only and not left and right margins!!! -->
+    <!-- margin collasping happens only to block elements i.e. (elements that start a new line and consume the entire width of the container available) -->
+    <!-- margin collaspe is when two margins collaspe into a single margin 
+     
+    the browser automatically does the margin collasping 
+    like in h1 = margin is 50 and h2 margin is 20 so total should be 70 (50 + 20) but browser takes the largest one 50 and leaves the smallest one 20
+
+    -->
+    <!-- margin-top: Adds empty space above the element.
+         margin-right: Adds empty space to the right of the element.
+         margin-bottom: Adds empty space below the element.
+         margin-left: Adds empty space to the left of the element 
+        
+    The margin Shorthand Property
+    One value (e.g., margin: 10px;): Applies to all four sides.
+    Two values (e.g., margin: 20px 10px;): First value applies to top and bottom; second value applies to left and right.
+    Three values (e.g., margin: 20px 15px 10px;): First applies to top; second applies to left and right; third applies to bottom.
+    Four values (e.g., margin: 10px 20px 15px 5px;): Applies in the exact order: top, right, bottom, left.
+    -->
+</body>
+</html>

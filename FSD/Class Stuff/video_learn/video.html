@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Display</title>
+    <!-- <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #1a1a2e;
+            font-family: Arial, sans-serif;
+        }
+        .video-container {
+            text-align: center;
+        }
+        h2 {
+            color: #eee;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+        video {
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            display: block;
+            max-width: 100%;
+        }
+        p.note {
+            color: #aaa;
+            font-size: 0.8rem;
+            margin-top: 10px;
+        }
+    </style> -->
+</head>
+
+<body>
+    <div class="video-container">
+        <h2>Video Player with Subtitles</h2>
+        <video width="640" height="360" controls poster="img1.jpg">
+            <!-- webm first (better compression), mp4 as fallback -->
+            <!-- <source src="movie.webm" type="video/webm"> -->
+            <source src="movie.mp4" type="video/mp4">
+            <track src="subtitle.vtt" kind="subtitles" srclang="en" label="English" default>
+            Your browser does not support the video tag.
+        </video>
+        <!-- <p class="note">Subtitles: English &nbsp;|&nbsp; Formats: WebM / MP4</p> -->
+    </div>
+
+    <!-- codeshare.io/mcaa -->
+    <!-- checkout the website the source code will be there for this question -->
+    <!-- video, webm, poster image, subtitles using track vtt -->
+    <!-- checkout infosys springboard courses on webdev -->
+    <!-- try to embed openstreet map(osm) from google -->
+    <!--dpi -->
+</body>
+
+</html>
