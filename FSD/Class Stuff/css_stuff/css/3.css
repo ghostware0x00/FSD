@@ -1,0 +1,28 @@
+body {
+    margin : 0; /*<figure> tags come with large, invisible default margins built into the browser. Setting this to 0 clears that out so your alignment is mathematically perfect */
+}
+
+img{
+    width:300px;
+    height:300px;
+}
+
+.flex-container{
+    display:flex; /*turns div to flexbox container. without this no flexbox property would work. display: flex activates flexbox power!!! */
+    flex-wrap: wrap; /* if there isnt any more horizontal space then form a newline so that it doesnt overflow the screen*/
+    justify-content: center; /* move flex items to the center of the flex container. justify-content: space-around produces evenly spaces around the flex items inside the flexbox container*/
+    /* flex-direction: row; */
+    gap: 10px; /* gap is used to provide spacing between items in the container only!!!*/
+    /* gap works only in containers which are of the following types :- flex, grid, multi-column layouts */
+    border: 2px solid purple;
+    padding: 20px;
+}
+
+
+
+.flex-items{
+    border: 2px solid green;
+    text-align:center; /* centers the content of the flex item to the center with respect to the flex item itself*/
+    /* the figcaption is within the div (.flex-items) so text-align: center would work */
+    padding:20px;
+}

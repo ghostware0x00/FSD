@@ -50,3 +50,8 @@ Account Number
 Customer Name
 Balance
 Account Type
+
+
+/*
+create 5 sections not 5 webpages and then anchor tag using # to go to that section 
+*/
