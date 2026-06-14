@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Banking System - Home</title>
+    <title>Banking System</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,24 +11,116 @@
 </header>
 
 <nav>
-    <a href="index.html">Home</a>
-    <a href="customer.html">Customer</a>
-    <a href="account.html">Account</a>
-    <a href="transaction.html">Transaction</a>
-    <a href="details.html">Details</a>
+    <a href="#home">Home</a>
+    <a href="#customer">Customer Registration</a>
+    <a href="#account">Open Account</a>
+    <a href="#transaction">Transaction</a>
+    <a href="#details">Account Details</a>
 </nav>
 
-<section>
-    <h2>Welcome</h2>
-    <p>This is a simple banking system project using basic HTML.</p>
+<section id="home">
+    <h2>Home</h2>
+    <p>Welcome to the Banking System.</p>
 </section>
 
-<aside>
-    <p>Services: Savings | Current | Transactions</p>
-</aside>
+<section id="customer">
+    <h2>Customer Registration</h2>
+
+    <form>
+        <label>Name</label>
+        <input type="text">
+
+        <label>DOB</label>
+        <input type="date">
+
+        <label>Address</label>
+        <input type="text">
+
+        <label>Phone</label>
+        <input type="text">
+
+        <label>Email</label>
+        <input type="email">
+
+        <input type="submit" value="Register">
+    </form>
+</section>
+
+<section id="account">
+    <h2>Open Account</h2>
+
+    <form>
+        <label>Customer ID</label>
+        <input type="text">
+
+        <label>Account Type</label>
+        <select>
+            <option>Savings</option>
+            <option>Current</option>
+        </select>
+
+        <label>Initial Deposit</label>
+        <input type="number">
+
+        <label>Branch</label>
+        <input type="text">
+
+        <input type="submit" value="Create Account">
+    </form>
+</section>
+
+<section id="transaction">
+    <h2>Transaction</h2>
+
+    <form>
+        <label>Account Number</label>
+        <input type="text">
+
+        <label>Transaction Type</label>
+        <select>
+            <option>Deposit</option>
+            <option>Withdraw</option>
+        </select>
+
+        <label>Amount</label>
+        <input type="number">
+
+        <label>Date</label>
+        <input type="date">
+
+        <input type="submit" value="Submit">
+    </form>
+</section>
+
+<section id="details">
+    <h2>Account Details</h2>
+
+    <table border="1">
+        <tr>
+            <th>Account No</th>
+            <th>Name</th>
+            <th>Balance</th>
+            <th>Type</th>
+        </tr>
+
+        <tr>
+            <td>101</td>
+            <td>Alice</td>
+            <td>5000</td>
+            <td>Savings</td>
+        </tr>
+
+        <tr>
+            <td>102</td>
+            <td>Bob</td>
+            <td>8000</td>
+            <td>Current</td>
+        </tr>
+    </table>
+</section>
 
 <footer>
-    <p>Home Page</p>
+    <p>Banking System Project</p>
 </footer>
 
 </body>
