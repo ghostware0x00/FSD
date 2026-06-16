@@ -1,0 +1,30 @@
+body{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /*fr = fragmet*/
+    grid-template-columns: minmax(100px, 1fr);
+    gap:10px;
+    align-items:center;
+    grid-template-areas:
+        "header header header"
+        "content content sidebar"
+        "footer footer footer";
+}
+
+
+.grid-item{
+    padding: 3em;
+    background-color:purple;
+    color:white;
+    border: 2px solid yellow;
+    align-items:center;
+    justify-content: center;
+}
+
+.grid-item-big{
+    /* grid-column: 1/2; */
+    background-color: coral;
+}

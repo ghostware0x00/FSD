@@ -6,122 +6,111 @@
 </head>
 <body>
 
-<header>
-    <h1>Banking System</h1>
-</header>
-
+<!-- Navigation Bar -->
 <nav>
-    <a href="#home">Home</a>
-    <a href="#customer">Customer Registration</a>
-    <a href="#account">Open Account</a>
-    <a href="#transaction">Transaction</a>
-    <a href="#details">Account Details</a>
+    <h2>MyBank</h2>
+
+    <div>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#dashboard">Dashboard</a>
+        <a href="#customer">Register</a>
+    </div>
 </nav>
 
-<section id="home">
-    <h2>Home</h2>
-    <p>Welcome to the Banking System.</p>
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <h1>Welcome to MyBank</h1>
+    <p>Safe and Secure Banking Solutions</p>
+    <button onclick="openModal()">Open Account</button>
 </section>
 
+<!-- Flexbox Layout -->
+<section id="services">
+    <h2>Banking Services</h2>
+
+    <div class="flex-container">
+        <div class="card">Savings Account</div>
+        <div class="card">Current Account</div>
+        <div class="card">Loans</div>
+        <div class="card">Online Banking</div>
+    </div>
+</section>
+
+<!-- Grid Layout -->
+<section id="dashboard">
+    <h2>Bank Dashboard</h2>
+
+    <div class="grid-container">
+        <div class="grid-item">Customers</div>
+        <div class="grid-item">Accounts</div>
+        <div class="grid-item">Transactions</div>
+        <div class="grid-item">Loans</div>
+    </div>
+</section>
+
+<!-- HTML5 API -->
+<section>
+    <h2>Find Your Location</h2>
+
+    <button onclick="getLocation()">Get Location</button>
+
+    <p id="location"></p>
+</section>
+
+<!-- Registration Form -->
 <section id="customer">
     <h2>Customer Registration</h2>
 
     <form>
-        <label>Name</label>
-        <input type="text">
-
-        <label>DOB</label>
-        <input type="date">
-
-        <label>Address</label>
-        <input type="text">
-
-        <label>Phone</label>
-        <input type="text">
-
-        <label>Email</label>
-        <input type="email">
-
+        <input type="text" placeholder="Enter Name">
+        <input type="email" placeholder="Enter Email">
         <input type="submit" value="Register">
     </form>
 </section>
 
-<section id="account">
-    <h2>Open Account</h2>
+<!-- Modal -->
+<div id="myModal" class="modal">
 
-    <form>
-        <label>Customer ID</label>
-        <input type="text">
+    <div class="modal-content">
+        <span onclick="closeModal()" class="close">&times;</span>
 
-        <label>Account Type</label>
-        <select>
-            <option>Savings</option>
-            <option>Current</option>
-        </select>
+        <h2>Open New Account</h2>
 
-        <label>Initial Deposit</label>
-        <input type="number">
+        <p>Thank you for choosing MyBank.</p>
+    </div>
 
-        <label>Branch</label>
-        <input type="text">
-
-        <input type="submit" value="Create Account">
-    </form>
-</section>
-
-<section id="transaction">
-    <h2>Transaction</h2>
-
-    <form>
-        <label>Account Number</label>
-        <input type="text">
-
-        <label>Transaction Type</label>
-        <select>
-            <option>Deposit</option>
-            <option>Withdraw</option>
-        </select>
-
-        <label>Amount</label>
-        <input type="number">
-
-        <label>Date</label>
-        <input type="date">
-
-        <input type="submit" value="Submit">
-    </form>
-</section>
-
-<section id="details">
-    <h2>Account Details</h2>
-
-    <table border="1">
-        <tr>
-            <th>Account No</th>
-            <th>Name</th>
-            <th>Balance</th>
-            <th>Type</th>
-        </tr>
-
-        <tr>
-            <td>101</td>
-            <td>Alice</td>
-            <td>5000</td>
-            <td>Savings</td>
-        </tr>
-
-        <tr>
-            <td>102</td>
-            <td>Bob</td>
-            <td>8000</td>
-            <td>Current</td>
-        </tr>
-    </table>
-</section>
+</div>
 
 <footer>
     <p>Banking System Project</p>
 </footer>
+
+<script>
+
+function openModal()
+{
+    document.getElementById("myModal").style.display="block";
+}
+
+function closeModal()
+{
+    document.getElementById("myModal").style.display="none";
+}
+
+function getLocation()
+{
+    navigator.geolocation.getCurrentPosition(showPosition);
+}
+
+function showPosition(position)
+{
+    document.getElementById("location").innerHTML =
+    "Latitude : " + position.coords.latitude +
+    "<br>Longitude : " + position.coords.longitude;
+}
+
+</script>
 
 </body>
 </html>
