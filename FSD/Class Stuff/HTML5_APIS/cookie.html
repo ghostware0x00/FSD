@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cookie Theme Example</title>
+<style>
+  body {
+    font-family: sans-serif;
+    transition: background 0.5s, color 0.5s;
+  }
+  .dark {
+    background: #111;
+    color: white;
+  }
+  .light {
+    background: white;
+    color: black;
+  }
+  button {
+    margin-top: 20px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background: steelblue;
+    color: white;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+  <h2>🌗 Cookie-based Theme</h2>
+  <button id="toggleBtn">Toggle Theme</button>
+
+  <script>
+    // --- Get cookie value ---
+    function getCookie(name) {
+      const cookies = document.cookie.split("; ");
+      const found = cookies.find(c => c.startsWith(name + "="));
+      return found ? found.split("=")[1] : null;
+    }
+
+    // --- Set cookie ---
+    function setCookie(name, value, days) {
+      const d = new Date();
+      d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+      document.cookie = `${name}=${value}; expires=${d.toUTCString()}; path=/`;
+    }
+
+    // --- Apply saved theme or default light ---
+    let theme = getCookie("theme") || "light";
+    document.body.classList.add(theme);
+
+    // --- Toggle button ---
+    document.getElementById("toggleBtn").onclick = () => {
+      theme = (theme === "light") ? "dark" : "light";
+      document.body.className = theme;
+      setCookie("theme", theme, 7); // save for 7 days
+    };
+  </script>
+</body>
+</html>

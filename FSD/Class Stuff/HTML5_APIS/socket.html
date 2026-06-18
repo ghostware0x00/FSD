@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Bitcoin Price Tracker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+
+  <h1 class="text-2xl font-bold mb-4">💹 Live Bitcoin Price (USD)</h1>
+
+  <div id="priceBox" class="bg-white shadow-lg rounded-2xl p-6 text-center w-80">
+    <p id="status" class="text-gray-500 mb-2">Connecting...</p>
+    <h2 id="price" class="text-4xl font-bold text-green-600">$0.00</h2>
+  </div>
+
+  <script>
+    const socket = new WebSocket("wss://stream.binance.com:9443/ws/btcusdt@trade");
+    const priceEl = document.getElementById("price");
+    const statusEl = document.getElementById("status");
+
+    socket.onopen = () => {
+      statusEl.textContent = "✅ Connected to Binance WebSocket";
+    };
+
+    socket.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      const price = parseFloat(data.p).toFixed(2);
+      priceEl.textContent = "$" + price;
+    };
+
+    socket.onclose = () => {
+      statusEl.textContent = "❌ Disconnected from WebSocket";
+    };
+  </script>
+
+</body>
+</html>

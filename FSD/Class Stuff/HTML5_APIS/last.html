@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Trello - IndexedDB + Drag & Drop</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gray-100 flex flex-col items-center p-4">
+  <h1 class="text-2xl font-bold mb-4">🗂️ Mini Trello - ToDo with IndexedDB & Drag & Drop</h1>
+
+  <div class="mb-4 flex gap-2">
+    <input id="taskInput" class="border rounded p-2 w-64" placeholder="Enter a new task">
+    <button id="addBtn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Add Task</button>
+  </div>
+
+  <div class="grid grid-cols-3 gap-4 w-full max-w-5xl text-center">
+    <div id="todo" class="bg-white rounded-lg shadow p-3" ondrop="drop(event, 'todo')" ondragover="allowDrop(event)">
+      <h2 class="font-semibold mb-2 text-blue-600">To Do</h2>
+      <ul id="todoList" class="min-h-[200px] space-y-2"></ul>
+    </div>
+
+    <div id="progress" class="bg-white rounded-lg shadow p-3" ondrop="drop(event, 'progress')" ondragover="allowDrop(event)">
+      <h2 class="font-semibold mb-2 text-yellow-600">In Progress</h2>
+      <ul id="progressList" class="min-h-[200px] space-y-2"></ul>
+    </div>
+
+    <div id="done" class="bg-white rounded-lg shadow p-3" ondrop="drop(event, 'done')" ondragover="allowDrop(event)">
+      <h2 class="font-semibold mb-2 text-green-600">Completed</h2>
+      <ul id="doneList" class="min-h-[200px] space-y-2"></ul>
+    </div>
+  </div>
+
+  <script>
+    let db;
+    const request = indexedDB.open("TrelloDB", 1);
+
+    request.onupgradeneeded = e => {
+      db = e.target.result;
+      db.createObjectStore("tasks", { keyPath: "id", autoIncrement: true });
+    };
+
+    request.onsuccess = e => {
+      db = e.target.result;
+      displayTasks();
+    };
+
+    // --- Add New Task ---
+    document.getElementById("addBtn").onclick = () => {
+      const input = document.getElementById("taskInput");
+      const task = input.value.trim();
+      if (!task) return;
+
+      const tx = db.transaction("tasks", "readwrite");
+      const store = tx.objectStore("tasks");
+      store.add({ name: task, status: "todo" });
+
+      input.value = "";
+      tx.oncomplete = displayTasks;
+    };
+
+    // --- Display Tasks based on status ---
+    function displayTasks() {
+      ["todoList", "progressList", "doneList"].forEach(id => {
+        document.getElementById(id).innerHTML = "";
+      });
+
+      const tx = db.transaction("tasks", "readonly");
+      const store = tx.objectStore("tasks");
+      store.openCursor().onsuccess = e => {
+        const cursor = e.target.result;
+        if (cursor) {
+          const li = document.createElement("li");
+          li.textContent = cursor.value.name;
+          li.draggable = true;
+          li.className = "p-2 bg-gray-50 border rounded cursor-move hover:bg-gray-100";
+          li.dataset.id = cursor.value.id;
+          li.dataset.status = cursor.value.status;
+          li.ondragstart = drag;
+          
+          if (cursor.value.status === "todo") document.getElementById("todoList").appendChild(li);
+          else if (cursor.value.status === "progress") document.getElementById("progressList").appendChild(li);
+          else document.getElementById("doneList").appendChild(li);
+          
+          cursor.continue();
+        }
+      };
+    }
+
+    // --- Drag and Drop Handlers ---
+    function drag(e) {
+      e.dataTransfer.setData("id", e.target.dataset.id);
+    }
+
+    function allowDrop(e) {
+      e.preventDefault();
+    }
+
+    function drop(e, newStatus) {
+      e.preventDefault();
+      const id = Number(e.dataTransfer.getData("id"));
+      const tx = db.transaction("tasks", "readwrite");
+      const store = tx.objectStore("tasks");
+      store.get(id).onsuccess = evt => {
+        const task = evt.target.result;
+        task.status = newStatus;
+        store.put(task);
+        tx.oncomplete = displayTasks;
+      };
+    }
+  </script>
+</body>
+</html>
