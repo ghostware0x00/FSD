@@ -1,129 +1,235 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Banking System</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyBank</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js"></script>
 </head>
-<body>
 
-<!-- Navigation Bar -->
-<nav>
-    <h2>MyBank</h2>
+<body class="bg-slate-100">
 
-    <div>
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#dashboard">Dashboard</a>
-        <a href="#customer">Register</a>
-    </div>
-</nav>
+    <!-- Navbar -->
+    <nav class="bg-blue-900 text-white p-4 sticky top-0">
+        <div class="flex justify-between items-center">
 
-<!-- Hero Section -->
-<section class="hero">
+            <h1 class="text-2xl font-bold">
+                MyBank
+            </h1>
 
-    <div class="hero-content">
+            <div class="space-x-4">
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#dashboard">Dashboard</a>
+                <a href="#register">Register</a>
+            </div>
 
-        <h1>Smart Banking For Everyone</h1>
+        </div>
+    </nav>
 
-        <p>
-            Manage accounts, transactions and loans
-            securely from anywhere.
+    <!-- Hero Section -->
+    <section
+        id="home"
+        class="h-screen flex flex-col justify-center items-center text-center bg-blue-600 text-white"
+    >
+
+        <h1 class="text-5xl font-bold mb-4">
+            Smart Banking For Everyone
+        </h1>
+
+        <p class="text-lg mb-6">
+            Manage accounts and banking services easily.
         </p>
 
-        <button onclick="openModal()">
+        <button
+            onclick="openModal()"
+            class="bg-white text-blue-700 px-6 py-3 rounded"
+        >
             Open Account
         </button>
 
+    </section>
+
+    <!-- Services (Flexbox) -->
+    <section id="services" class="p-10">
+
+        <h2 class="text-3xl font-bold text-center mb-8">
+            Banking Services
+        </h2>
+
+        <div class="flex flex-wrap justify-center gap-6">
+
+            <div class="bg-white p-6 rounded shadow w-56 text-center">
+                Savings Account
+            </div>
+
+            <div class="bg-white p-6 rounded shadow w-56 text-center">
+                Current Account
+            </div>
+
+            <div class="bg-white p-6 rounded shadow w-56 text-center">
+                Loan Services
+            </div>
+
+            <div class="bg-white p-6 rounded shadow w-56 text-center">
+                Online Banking
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Dashboard (Grid) -->
+    <section id="dashboard" class="p-10 bg-white">
+
+        <h2 class="text-3xl font-bold text-center mb-8">
+            Dashboard
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <div class="p-6 bg-slate-200 rounded text-center">
+                Customers
+            </div>
+
+            <div class="p-6 bg-slate-200 rounded text-center">
+                Accounts
+            </div>
+
+            <div class="p-6 bg-slate-200 rounded text-center">
+                Transactions
+            </div>
+
+            <div class="p-6 bg-slate-200 rounded text-center">
+                Loans
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Geolocation API -->
+    <section class="p-10">
+
+        <h2 class="text-3xl font-bold text-center mb-6">
+            Find Your Location
+        </h2>
+
+        <div class="text-center">
+
+            <button
+                onclick="getLocation()"
+                class="bg-green-600 text-white px-5 py-2 rounded"
+            >
+                Get Location
+            </button>
+
+            <p id="location" class="mt-4"></p>
+
+        </div>
+
+    </section>
+
+    <!-- Drag and Drop API -->
+    <section class="p-10 bg-white">
+
+        <h2 class="text-3xl font-bold text-center mb-8">
+            Drag and Drop Demo
+        </h2>
+
+        <div class="flex justify-center gap-10">
+
+            <div
+                id="dragItem"
+                draggable="true"
+                ondragstart="drag(event)"
+                class="bg-blue-500 text-white p-4 rounded cursor-move"
+            >
+                Bank Card
+            </div>
+
+            <div
+                ondrop="drop(event)"
+                ondragover="allowDrop(event)"
+                class="w-48 h-32 border-2 border-dashed border-black flex items-center justify-center"
+            >
+                Drop Here
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Registration Form -->
+    <section id="register" class="p-10">
+
+        <h2 class="text-3xl font-bold text-center mb-8">
+            Customer Registration
+        </h2>
+
+        <form
+            onsubmit="return validateForm()"
+            class="max-w-md mx-auto bg-white p-6 rounded shadow"
+        >
+
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter Name"
+                class="w-full border p-2 mb-4"
+            >
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Enter Email"
+                class="w-full border p-2 mb-4"
+            >
+
+            <input
+                type="submit"
+                value="Register"
+                class="bg-blue-700 text-white px-4 py-2 rounded cursor-pointer"
+            >
+
+        </form>
+
+    </section>
+
+    <!-- Modal -->
+    <div
+        id="modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-50"
+    >
+
+        <div
+            class="bg-white w-80 p-6 rounded mx-auto mt-40 text-center"
+        >
+
+            <h2 class="text-2xl font-bold mb-3">
+                Open Account
+            </h2>
+
+            <p class="mb-4">
+                Thank you for choosing MyBank.
+            </p>
+
+            <button
+                onclick="closeModal()"
+                class="bg-red-500 text-white px-4 py-2 rounded"
+            >
+                Close
+            </button>
+
+        </div>
+
     </div>
 
-</section>
-
-<!-- Flexbox Layout -->
-<section id="services">
-    <h2>Banking Services</h2>
-
-    <div class="flex-container">
-        <div class="card">Savings Account</div>
-        <div class="card">Current Account</div>
-        <div class="card">Loans</div>
-        <div class="card">Online Banking</div>
-    </div>
-</section>
-
-<!-- Grid Layout -->
-<section id="dashboard">
-    <h2>Bank Dashboard</h2>
-
-    <div class="grid-container">
-        <div class="grid-item">Customers</div>
-        <div class="grid-item">Accounts</div>
-        <div class="grid-item">Transactions</div>
-        <div class="grid-item">Loans</div>
-    </div>
-</section>
-
-<!-- HTML5 API -->
-<section>
-    <h2>Find Your Location</h2>
-
-    <button onclick="getLocation()">Get Location</button>
-
-    <p id="location"></p>
-</section>
-
-<!-- Registration Form -->
-<section id="customer">
-    <h2>Customer Registration</h2>
-
-    <form>
-        <input type="text" placeholder="Enter Name">
-        <input type="email" placeholder="Enter Email">
-        <input type="submit" value="Register">
-    </form>
-</section>
-
-<!-- Modal -->
-<div id="myModal" class="modal">
-
-    <div class="modal-content">
-        <span onclick="closeModal()" class="close">&times;</span>
-
-        <h2>Open New Account</h2>
-
-        <p>Thank you for choosing MyBank.</p>
-    </div>
-
-</div>
-
-<footer>
-    <p>Banking System Project</p>
-</footer>
-
-<script>
-
-function openModal()
-{
-    document.getElementById("myModal").style.display="block";
-}
-
-function closeModal()
-{
-    document.getElementById("myModal").style.display="none";
-}
-
-function getLocation()
-{
-    navigator.geolocation.getCurrentPosition(showPosition);
-}
-
-function showPosition(position)
-{
-    document.getElementById("location").innerHTML =
-    "Latitude : " + position.coords.latitude +
-    "<br>Longitude : " + position.coords.longitude;
-}
-
-</script>
-
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white text-center p-4">
+        Banking System Project
+    </footer>
 </body>
 </html>
