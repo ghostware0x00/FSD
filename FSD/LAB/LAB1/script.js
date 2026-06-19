@@ -10,7 +10,17 @@ function closeModal()
 
 function getLocation()
 {
-    navigator.geolocation.getCurrentPosition(showPosition);
+    let locationDiv = document.getElementById("location");
+    locationDiv.innerHTML = "Locating...";
+
+    if (navigator.geolocation)
+    {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+    }
+    else
+    {
+        locationDiv.innerHTML = "Geolocation is not supported by this browser.";
+    }
 }
 
 function showPosition(position)
@@ -20,6 +30,26 @@ function showPosition(position)
     position.coords.latitude +
     "<br>Longitude : " +
     position.coords.longitude;
+}
+
+function showError(error)
+{
+    let locationDiv = document.getElementById("location");
+    switch(error.code)
+    {
+        case error.PERMISSION_DENIED:
+            locationDiv.innerHTML = "Error: Permission denied. Please allow location access in your browser settings.";
+            break;
+        case error.POSITION_UNAVAILABLE:
+            locationDiv.innerHTML = "Error: Location information is unavailable. Ensure device location service is enabled.";
+            break;
+        case error.TIMEOUT:
+            locationDiv.innerHTML = "Error: Location request timed out.";
+            break;
+        case error.UNKNOWN_ERROR:
+            locationDiv.innerHTML = "Error: An unknown error occurred.";
+            break;
+    }
 }
 
 function validateForm()
