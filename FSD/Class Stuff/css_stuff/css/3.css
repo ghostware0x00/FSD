@@ -10,9 +10,15 @@ img{
 .flex-container{
     display:flex; /*turns div to flexbox container. without this no flexbox property would work. display: flex activates flexbox power!!! */
     flex-wrap: wrap; /* if there isnt any more horizontal space then form a newline so that it doesnt overflow the screen*/
-    justify-content: center; /* move flex items to the center of the flex container. justify-content: space-around produces evenly spaces around the flex items inside the flexbox container*/
-    /* flex-direction: row; */
-    gap: 10px; /* gap is used to provide spacing between items in the container only!!!*/
+    justify-content: center; /*aligns and distributes flex items along the main axis of the container (main axis if row in flexbox by default)*/
+    /* main axis of flexbox is row i.e. flex-direction: row 
+    so items in justify-content: center are distributed along the default main axis unless changled
+    there is also flex-direction: column which arranges flex items along main axis column wise
+    */
+    align-items: center; /*aligns items towards the center of the flexbox*/
+    gap: 10px; /* gap is used to provide spacing between flex items inside the parent flexbox container while margin might move these items outside flexbox iteself
+    so gap is used instead of margin to provide spacing between flex items rather than margin.
+    */
     /* gap works only in containers which are of the following types :- flex, grid, multi-column layouts */
     border: 2px solid purple;
     padding: 20px;
@@ -26,3 +32,10 @@ img{
     /* the figcaption is within the div (.flex-items) so text-align: center would work */
     padding:20px;
 }
+
+
+/* to centralise the flexitems do the following stuff :-moz-any
+<------------the below 2 commands should be inside the parent flexbox container------------->
+justify-content:center;
+align-items:center;
+*/

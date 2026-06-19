@@ -8,6 +8,13 @@
     margin: 0 auto;
     /* top bottom left left */
     /* id has higher priority than class */
+    /* priority levels are classified into 3 portions
+    0 0 0 (id class selectors)
+    .c1 .c2 .c3{
+    here .c3 class property will be chosen
+    and the priority value will be 10 + 10 + 10 = 30
+    }
+    */
 }
 
 .u1{
@@ -30,7 +37,7 @@ img{
     width:300px;
     height:300px;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto; /*centers the bar horizontally*/
     width:100%;
     height:100%;
 }
