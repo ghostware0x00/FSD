@@ -4,258 +4,124 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MyBank</title>
-
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="script.js"></script>
 </head>
-
 <body class="bg-slate-100">
 
     <!-- Navbar -->
     <nav class="bg-blue-900 text-white p-4 sticky top-0 z-50 shadow-lg">
         <div class="flex justify-between items-center">
-
-            <h1 class="text-2xl font-bold">
-                MyBank
-            </h1>
-
+            <h1 class="text-2xl font-bold">MyBank</h1>
             <div class="space-x-4">
                 <a href="#home">Home</a>
                 <a href="#services">Services</a>
                 <a href="#dashboard">Dashboard</a>
                 <a href="#register">Register</a>
             </div>
-
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen bg-cover bg-center flex flex-col justify-center items-center text-center text-white px-6"
-    style="background-image:url('https://images.unsplash.com/photo-1556740749-887f6717d7e4?w=1200');">
-
-    <h1 class="text-4xl md:text-6xl font-bold mb-4">
-    Smart Banking For Everyone
-    </h1>
-
-    <p class="text-base md:text-xl mb-6">
-    Manage your money securely anytime and anywhere.
-    </p>
-
-    <button onclick="openModal()"
-    class="bg-white text-blue-700 px-6 py-3 rounded hover:bg-gray-200">
-    Open Account
-    </button>
-
+    <section id="home" class="min-h-screen bg-cover bg-center flex flex-col justify-center items-center text-center text-white px-6" style="background-image:url('https://images.unsplash.com/photo-1556740749-887f6717d7e4?w=1200');">
+        <h1 class="text-4xl md:text-6xl font-bold mb-4">Smart Banking For Everyone</h1>
+        <p class="text-base md:text-xl mb-6">Manage your money securely anytime and anywhere.</p>
+        <button onclick="openModal()" class="bg-white text-blue-700 px-6 py-3 rounded hover:bg-gray-200">Open Account</button>
     </section>
 
     <!-- Services (Flexbox) -->
     <section id="services" class="p-10">
-
-        <h2 class="text-3xl font-bold text-center mb-8">
-            Banking Services
-        </h2>
-
+        <h2 class="text-3xl font-bold text-center mb-8">Banking Services</h2>
         <div class="flex flex-wrap justify-center gap-6">
             <div class="flex flex-wrap justify-center gap-8">
-
-            <div class="bg-white rounded shadow w-64 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400"
-            class="w-full h-40 object-cover">
-            <div class="p-4 text-center">
-            <h3 class="font-bold text-lg">Savings Account</h3>
-            <p class="text-sm mt-2">Safe and secure savings.</p>
+                <div class="bg-white rounded shadow w-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400" class="w-full h-40 object-cover">
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-lg">Savings Account</h3>
+                        <p class="text-sm mt-2">Safe and secure savings.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded shadow w-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400" class="w-full h-40 object-cover">
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-lg">Current Account</h3>
+                        <p class="text-sm mt-2">Perfect for businesses.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded shadow w-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=400" class="w-full h-40 object-cover">
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-lg">Loan Services</h3>
+                        <p class="text-sm mt-2">Affordable loan options.</p>
+                    </div>
+                </div>
+                <div class="bg-white rounded shadow w-64 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400" class="w-full h-40 object-cover">
+                    <div class="p-4 text-center">
+                        <h3 class="font-bold text-lg">Online Banking</h3>
+                        <p class="text-sm mt-2">Bank from anywhere.</p>
+                    </div>
+                </div>
             </div>
-            </div>
-
-            <div class="bg-white rounded shadow w-64 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400"
-            class="w-full h-40 object-cover">
-            <div class="p-4 text-center">
-            <h3 class="font-bold text-lg">Current Account</h3>
-            <p class="text-sm mt-2">Perfect for businesses.</p>
-            </div>
-            </div>
-
-            <div class="bg-white rounded shadow w-64 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=400"
-            class="w-full h-40 object-cover">
-            <div class="p-4 text-center">
-            <h3 class="font-bold text-lg">Loan Services</h3>
-            <p class="text-sm mt-2">Affordable loan options.</p>
-            </div>
-            </div>
-
-            <div class="bg-white rounded shadow w-64 overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400"
-            class="w-full h-40 object-cover">
-            <div class="p-4 text-center">
-            <h3 class="font-bold text-lg">Online Banking</h3>
-            <p class="text-sm mt-2">Bank from anywhere.</p>
-            </div>
-            </div>
-
-</div>
         </div>
-
     </section>
 
     <!-- Dashboard (Grid) -->
     <section id="dashboard" class="p-10 bg-white">
-
-        <h2 class="text-3xl font-bold text-center mb-8">
-            Dashboard
-        </h2>
-
+        <h2 class="text-3xl font-bold text-center mb-8">Dashboard</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-
-            <div class="p-6 bg-slate-200 rounded text-center">
-                Customers
-            </div>
-
-            <div class="p-6 bg-slate-200 rounded text-center">
-                Accounts
-            </div>
-
-            <div class="p-6 bg-slate-200 rounded text-center">
-                Transactions
-            </div>
-
-            <div class="p-6 bg-slate-200 rounded text-center">
-                Loans
-            </div>
-
+            <div class="p-6 bg-slate-200 rounded text-center">Customers</div>
+            <div class="p-6 bg-slate-200 rounded text-center">Accounts</div>
+            <div class="p-6 bg-slate-200 rounded text-center">Transactions</div>
+            <div class="p-6 bg-slate-200 rounded text-center">Loans</div>
         </div>
-
     </section>
 
     <!-- Geolocation API -->
     <section class="p-10">
-
-        <h2 class="text-3xl font-bold text-center mb-6">
-            Find Your Location
-        </h2>
-
+        <h2 class="text-3xl font-bold text-center mb-6">Find Your Location</h2>
         <div class="text-center">
-
-            <button
-                onclick="getLocation()"
-                class="bg-green-600 text-white px-5 py-2 rounded"
-            >
-                Get Location
-            </button>
-
+            <button onclick="getLocation()" class="bg-green-600 text-white px-5 py-2 rounded">Get Location</button>
             <p id="location" class="mt-4"></p>
-
         </div>
-
     </section>
 
     <!-- Drag and Drop API -->
     <section class="p-10 bg-white">
-
-        <h2 class="text-3xl font-bold text-center mb-8">
-            Drag and Drop Demo
-        </h2>
-
+        <h2 class="text-3xl font-bold text-center mb-8">Drag and Drop Demo</h2>
         <div class="flex justify-center gap-10">
-
-            <div
-                id="dragItem"
-                draggable="true"
-                ondragstart="drag(event)"
-                class="bg-blue-500 text-white p-4 rounded cursor-move"
-            >
-                Bank Card
-            </div>
-
-            <div
-                ondrop="drop(event)"
-                ondragover="allowDrop(event)"
-                class="w-48 h-32 border-2 border-dashed border-black flex items-center justify-center"
-            >
-                Drop Here
-            </div>
-
+            <div id="dragItem" draggable="true" ondragstart="drag(event)" class="bg-blue-500 text-white p-4 rounded cursor-move">Bank Card</div>
+            <div ondrop="drop(event)" ondragover="allowDrop(event)" class="w-48 h-32 border-2 border-dashed border-black flex items-center justify-center">Drop Here</div>
         </div>
-
     </section>
 
     <!-- Registration Form -->
     <section id="register" class="p-10">
-
-        <h2 class="text-3xl font-bold text-center mb-8">
-            Customer Registration
-        </h2>
-
+        <h2 class="text-3xl font-bold text-center mb-8">Customer Registration</h2>
         <form id="registerForm" class="max-w-md mx-auto bg-white p-6 rounded shadow">
-
-<input type="text" id="name" placeholder="Full Name"
-class="w-full border p-2 mb-3 rounded">
-
-<input type="password" id="password"
-placeholder="Password"
-class="w-full border p-2 mb-3 rounded">
-
-<input type="email" id="email"
-placeholder="Email"
-class="w-full border p-2 mb-3 rounded">
-
-<input type="date"
-id="dob"
-class="w-full border p-2 mb-3 rounded">
-
-<input type="file"
-id="photo"
-class="w-full border p-2 mb-3 rounded">
-
-<select id="account"
-class="w-full border p-2 mb-4 rounded">
-
-<option value="">Select Account</option>
-<option>Savings</option>
-<option>Current</option>
-<option>Loan</option>
-
-</select>
-
-<button type="submit"
-class="bg-blue-700 text-white px-4 py-2 rounded w-full">
-Register
-</button>
-
-</form>
-
-<div id="card" class="mt-8"></div>
-
+            <input type="text" id="name" placeholder="Full Name" class="w-full border p-2 mb-3 rounded">
+            <input type="password" id="password" placeholder="Password" class="w-full border p-2 mb-3 rounded">
+            <input type="email" id="email" placeholder="Email" class="w-full border p-2 mb-3 rounded">
+            <input type="date" id="dob" class="w-full border p-2 mb-3 rounded">
+            <input type="file" id="photo" class="w-full border p-2 mb-3 rounded">
+            <select id="account" class="w-full border p-2 mb-4 rounded">
+                <option value="">Select Account</option>
+                <option>Savings</option>
+                <option>Current</option>
+                <option>Loan</option>
+            </select>
+            <button type="submit" class="bg-blue-700 text-white px-4 py-2 rounded w-full">Register</button>
+        </form>
+        <div id="card" class="mt-8"></div>
     </section>
 
     <!-- Modal -->
-    <div
-        id="modal"
-        class="hidden fixed inset-0 bg-black bg-opacity-50"
-    >
-
-        <div
-            class="bg-white w-80 p-6 rounded mx-auto mt-40 text-center"
-        >
-
-            <h2 class="text-2xl font-bold mb-3">
-                Open Account
-            </h2>
-
-            <p class="mb-4">
-                Thank you for choosing MyBank.
-            </p>
-
-            <button
-                onclick="closeModal()"
-                class="bg-red-500 text-white px-4 py-2 rounded"
-            >
-                Close
-            </button>
-
+    <div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-50">
+        <div class="bg-white w-80 p-6 rounded mx-auto mt-40 text-center">
+            <h2 class="text-2xl font-bold mb-3">Open Account</h2>
+            <p class="mb-4">Thank you for choosing MyBank.</p>
+            <button onclick="closeModal()" class="bg-red-500 text-white px-4 py-2 rounded">Close</button>
         </div>
-
     </div>
 
     <!-- Footer -->
