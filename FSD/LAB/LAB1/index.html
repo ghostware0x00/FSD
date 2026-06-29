@@ -103,9 +103,11 @@
     </section>
 
     <!-- Registration Form -->
+    <!-- Registration Form -->
     <section id="register" class="p-10">
         <h2 class="text-3xl font-bold text-center mb-8">Customer Registration</h2>
-        <form id="registerForm" class="max-w-md mx-auto bg-white p-6 rounded shadow">
+        <!-- Added onsubmit attribute here -->
+        <form id="registerForm" onsubmit="validateForm(event)" class="max-w-md mx-auto bg-white p-6 rounded shadow">
             <input type="text" id="name" placeholder="Full Name" class="w-full border p-2 mb-3 rounded">
             <input type="password" id="password" placeholder="Password" class="w-full border p-2 mb-3 rounded">
             <input type="email" id="email" placeholder="Email" class="w-full border p-2 mb-3 rounded">
@@ -117,10 +119,15 @@
                 <option>Current</option>
                 <option>Loan</option>
             </select>
+            
+            <!-- Dynamic error message container inside the form -->
+            <div id="formError" class="hidden text-red-600 text-sm font-semibold mb-3 text-center"></div>
+
             <button type="submit" class="bg-blue-700 text-white px-4 py-2 rounded w-full">Register</button>
         </form>
         <div id="card" class="mt-8"></div>
     </section>
+
 
     <!-- Modal -->
     <div id="modal" class="hidden fixed inset-0 bg-black bg-opacity-50">
