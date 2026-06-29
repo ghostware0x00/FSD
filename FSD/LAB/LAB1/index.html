@@ -23,11 +23,18 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen bg-cover bg-center flex flex-col justify-center items-center text-center text-white px-6" style="background-image:url('https://images.unsplash.com/photo-1556740749-887f6717d7e4?w=1200');">
-        <h1 class="text-4xl md:text-6xl font-bold mb-4">Smart Banking For Everyone</h1>
-        <p class="text-base md:text-xl mb-6">Manage your money securely anytime and anywhere.</p>
-        <button onclick="openModal()" class="bg-white text-blue-700 px-6 py-3 rounded hover:bg-gray-200">Open Account</button>
+        <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen bg-cover bg-center flex flex-col justify-center items-center text-center text-white px-6" style="background-image:url('https://images.unsplash.com/photo-1556740749-887f6717d7e4?w=1200');">
+        <!-- Dark Overlay Mask to make text visible -->
+        <div class="absolute inset-0 bg-black/50 z-0"></div>
+        <!-- Hero Content Layered Over Mask -->
+        <div class="relative z-10 max-w-2xl">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Smart Banking For Everyone</h1>
+            <p class="text-base md:text-xl mb-6">Manage your money securely anytime and anywhere.</p>
+            <button onclick="openModal()" class="bg-white text-blue-700 px-6 py-3 rounded font-semibold hover:bg-gray-200 transition-colors">Open Account</button>
+        </div>
     </section>
+
 
     <!-- Services (Flexbox) -->
     <section id="services" class="p-10">
