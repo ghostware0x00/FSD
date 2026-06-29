@@ -12,7 +12,7 @@
 <body class="bg-slate-100">
 
     <!-- Navbar -->
-    <nav class="bg-blue-900 text-white p-4 sticky top-0">
+    <nav class="bg-blue-900 text-white p-4 sticky top-0 z-50 shadow-lg">
         <div class="flex justify-between items-center">
 
             <h1 class="text-2xl font-bold">
@@ -30,25 +30,21 @@
     </nav>
 
     <!-- Hero Section -->
-    <section
-        id="home"
-        class="h-screen flex flex-col justify-center items-center text-center bg-blue-600 text-white"
-    >
+    <section id="home" class="min-h-screen bg-cover bg-center flex flex-col justify-center items-center text-center text-white px-6"
+    style="background-image:url('https://images.unsplash.com/photo-1556740749-887f6717d7e4?w=1200');">
 
-        <h1 class="text-5xl font-bold mb-4">
-            Smart Banking For Everyone
-        </h1>
+    <h1 class="text-4xl md:text-6xl font-bold mb-4">
+    Smart Banking For Everyone
+    </h1>
 
-        <p class="text-lg mb-6">
-            Manage accounts and banking services easily.
-        </p>
+    <p class="text-base md:text-xl mb-6">
+    Manage your money securely anytime and anywhere.
+    </p>
 
-        <button
-            onclick="openModal()"
-            class="bg-white text-blue-700 px-6 py-3 rounded"
-        >
-            Open Account
-        </button>
+    <button onclick="openModal()"
+    class="bg-white text-blue-700 px-6 py-3 rounded hover:bg-gray-200">
+    Open Account
+    </button>
 
     </section>
 
@@ -60,23 +56,45 @@
         </h2>
 
         <div class="flex flex-wrap justify-center gap-6">
+            <div class="flex flex-wrap justify-center gap-8">
 
-            <div class="bg-white p-6 rounded shadow w-56 text-center">
-                Savings Account
+            <div class="bg-white rounded shadow w-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400"
+            class="w-full h-40 object-cover">
+            <div class="p-4 text-center">
+            <h3 class="font-bold text-lg">Savings Account</h3>
+            <p class="text-sm mt-2">Safe and secure savings.</p>
+            </div>
             </div>
 
-            <div class="bg-white p-6 rounded shadow w-56 text-center">
-                Current Account
+            <div class="bg-white rounded shadow w-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400"
+            class="w-full h-40 object-cover">
+            <div class="p-4 text-center">
+            <h3 class="font-bold text-lg">Current Account</h3>
+            <p class="text-sm mt-2">Perfect for businesses.</p>
+            </div>
             </div>
 
-            <div class="bg-white p-6 rounded shadow w-56 text-center">
-                Loan Services
+            <div class="bg-white rounded shadow w-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=400"
+            class="w-full h-40 object-cover">
+            <div class="p-4 text-center">
+            <h3 class="font-bold text-lg">Loan Services</h3>
+            <p class="text-sm mt-2">Affordable loan options.</p>
+            </div>
             </div>
 
-            <div class="bg-white p-6 rounded shadow w-56 text-center">
-                Online Banking
+            <div class="bg-white rounded shadow w-64 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400"
+            class="w-full h-40 object-cover">
+            <div class="p-4 text-center">
+            <h3 class="font-bold text-lg">Online Banking</h3>
+            <p class="text-sm mt-2">Bank from anywhere.</p>
+            </div>
             </div>
 
+</div>
         </div>
 
     </section>
@@ -169,32 +187,45 @@
             Customer Registration
         </h2>
 
-        <form
-            onsubmit="return validateForm()"
-            class="max-w-md mx-auto bg-white p-6 rounded shadow"
-        >
+        <form id="registerForm" class="max-w-md mx-auto bg-white p-6 rounded shadow">
 
-            <input
-                type="text"
-                id="name"
-                placeholder="Enter Name"
-                class="w-full border p-2 mb-4"
-            >
+<input type="text" id="name" placeholder="Full Name"
+class="w-full border p-2 mb-3 rounded">
 
-            <input
-                type="email"
-                id="email"
-                placeholder="Enter Email"
-                class="w-full border p-2 mb-4"
-            >
+<input type="password" id="password"
+placeholder="Password"
+class="w-full border p-2 mb-3 rounded">
 
-            <input
-                type="submit"
-                value="Register"
-                class="bg-blue-700 text-white px-4 py-2 rounded cursor-pointer"
-            >
+<input type="email" id="email"
+placeholder="Email"
+class="w-full border p-2 mb-3 rounded">
 
-        </form>
+<input type="date"
+id="dob"
+class="w-full border p-2 mb-3 rounded">
+
+<input type="file"
+id="photo"
+class="w-full border p-2 mb-3 rounded">
+
+<select id="account"
+class="w-full border p-2 mb-4 rounded">
+
+<option value="">Select Account</option>
+<option>Savings</option>
+<option>Current</option>
+<option>Loan</option>
+
+</select>
+
+<button type="submit"
+class="bg-blue-700 text-white px-4 py-2 rounded w-full">
+Register
+</button>
+
+</form>
+
+<div id="card" class="mt-8"></div>
 
     </section>
 

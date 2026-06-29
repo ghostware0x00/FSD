@@ -1,0 +1,3 @@
+implement stick to navbar
+make text relative font
+include video and images in the website 

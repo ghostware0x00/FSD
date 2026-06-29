@@ -52,23 +52,38 @@ function showError(error)
     }
 }
 
-function validateForm()
+const validateForm=(event)=>{
+
+event.preventDefault();
+
+let name=document.getElementById("name").value;
+let password=document.getElementById("password").value;
+let email=document.getElementById("email").value;
+let dob=document.getElementById("dob").value;
+let account=document.getElementById("account").value;
+
+if(name==""||password==""||email==""||account=="")
 {
-    let name =
-    document.getElementById("name").value;
-
-    let email =
-    document.getElementById("email").value;
-
-    if(name === "" || email === "")
-    {
-        alert("All fields are required");
-        return false;
-    }
-
-    alert("Registration Successful");
-    return true;
+alert("Please fill all fields");
+return;
 }
+
+document.getElementById("card").innerHTML=`
+<div class="bg-white p-6 rounded shadow max-w-md mx-auto">
+
+<h2 class="text-xl font-bold mb-3">
+Registration Details
+</h2>
+
+<p><b>Name:</b> ${name}</p>
+<p><b>Email:</b> ${email}</p>
+<p><b>DOB:</b> ${dob}</p>
+<p><b>Account:</b> ${account}</p>
+
+</div>
+`;
+
+};
 
 function allowDrop(event)
 {
